@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Drains Manchester | Professional Drainage & Plumbing</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #A249B4;
+            --primary-glow: rgba(162, 73, 180, 0.6);
+            --accent-black: #1a1a1a;
+            --text-dark: #333333;
+            --text-gray: #555;
+            --navbar-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background-color: #fcfcfc;
+        }
+
+        /* --- Animations --- */
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 var(--primary-glow); }
+            70% { box-shadow: 0 0 0 15px rgba(162, 73, 180, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(162, 73, 180, 0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Updated Navbar (White Theme) --- */
+        .navbar {
+            transition: all 0.4s ease;
+            padding: 15px 0;
+            background: var(--navbar-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .navbar.scrolled {
+            padding: 8px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            color: var(--accent-black) !important;
+        }
+
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .dropdown-menu {
+            border: none;
+            border-top: 3px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.3s ease;
+            background-color: #ffffff;
+        }
+
+        .dropdown-item {
+            font-weight: 500;
+            padding: 10px 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Buttons --- */
+        .btn-neon {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .btn-neon:hover {
+            background-color: var(--accent-black);
+            color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-emergency {
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* --- Hero Section --- */
+        .hero-carousel .carousel-item {
+            height: 85vh;
+            min-height: 600px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            color: var(--accent-black);
+            max-width: 700px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* --- Why Choose Us --- */
+        .feature-card {
+            background: white;
+            border: none;
+            padding: 40px 20px;
+            border-radius: 15px;
+            transition: all 0.4s;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 35px rgba(162, 73, 180, 0.2);
+            border: 1px solid var(--primary-color);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- Services --- */
+        .service-card {
+            overflow: hidden;
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .service-img-container {
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .service-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- Video Section --- */
+        .video-wrapper {
+            border: 4px solid var(--primary-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 30px var(--primary-glow);
+        }
+
+        /* --- Floating UI --- */
+        .floating-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-decoration: none;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .mobile-cta-bar {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #ffffff;
+            border-top: 1px solid #eee;
+            z-index: 999;
+            padding: 10px;
+        }
+
+        /* --- Forms --- */
+        .form-floating input:focus, .form-floating textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem var(--primary-glow);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--accent-black);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: white;
+                margin-top: 15px;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .mobile-cta-bar { display: flex; gap: 10px; }
+            .floating-call { bottom: 80px; }
+        }
+
+        /* Page Transitions */
+        #page-content {
+            transition: opacity 0.4s ease-in-out;
+        }
+        .page-fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#" onclick="showPage('home')">
+    <img src="image/logo.png" alt="AA Manchester Plumbing Logo" style="height:50px;" class="me-2">
+   
+</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fas fa-bars text-dark"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="route('home')">Home</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="drainDropdown" role="button" data-bs-toggle="dropdown">Drainage</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="route('service-drainage')">Emergency Drain Service</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="route('service-blocked')">Blocked Drains</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="route('service-repair')">Drain Repairs</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" onclick="route('service-cctv')">CCTV Survey</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="plumbingDropdown" role="button" data-bs-toggle="dropdown">Plumbing</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="route('service-plumbing')">Emergency Plumber</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="route('service-toilet')">Toilet Unblocking</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link" href="#" onclick="route('service-flooded')">Flooded</a></li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="moreDropdown" role="button" data-bs-toggle="dropdown">More</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="route('service-septic')">Septic Tanks</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="route('service-tanker')">Vacuum Tanker</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="route('reviews')">Reviews</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="route('contact')">Contact Us</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="ms-lg-3">
+                    <a href="tel:07366712466" class="btn btn-neon btn-emergency btn-sm">24/7 EMERGENCY</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div id="page-content">
+        <!-- Home Page -->
+        <div id="view-home">
+            <section class="hero-carousel carousel slide carousel-fade" data-bs-ride="carousel" id="heroSlider">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" style="background-image: url('https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=1600')">
+                        <div class="hero-overlay">
+                            <div class="container">
+                                <div class="hero-content">
+                                    <h1 class="reveal active">Here to Help with Drain Unblocking & Drain Repairs</h1>
+                                    <p class="fs-4 mb-4 reveal active">Drain Unblocking from <strong>£60 + VAT</strong></p>
+                                    <div class="d-flex flex-wrap gap-3 reveal active">
+                                        <a href="tel:01618880833" class="btn btn-neon btn-lg">Call Office: 0161 888 0833</a>
+                                        <a href="tel:07366712466" class="btn btn-outline-dark btn-lg btn-emergency">Emergency: 0736 671 2466</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us -->
+            <section class="py-5 bg-white">
+                <div class="container py-5">
+                    <div class="text-center mb-5 reveal">
+                        <h2 class="fw-bold">Why Choose Quick Drains Manchester?</h2>
+                        <div class="mx-auto mt-2" style="width: 80px; height: 4px; background: var(--primary-color);"></div>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-4 col-lg-3 reveal">
+                            <div class="feature-card">
+                                <i class="fas fa-pound-sign feature-icon"></i>
+                                <h4>No Call Out Fees</h4>
+                                <p>We believe in transparent pricing with no hidden surprises.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-3 reveal">
+                            <div class="feature-card">
+                                <i class="fas fa-clock feature-icon"></i>
+                                <h4>2 Hour Response</h4>
+                                <p>Rapid response times across Manchester and surrounding areas.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-3 reveal">
+                            <div class="feature-card">
+                                <i class="fas fa-check-circle feature-icon"></i>
+                                <h4>Qualified Engineers</h4>
+                                <p>All our technicians are highly trained and fully insured.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-3 reveal">
+                            <div class="feature-card">
+                                <i class="fas fa-star feature-icon"></i>
+                                <h4>5 Star Reviews</h4>
+                                <p>Proudly serving the community with exceptional ratings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="py-5 bg-light">
+                <div class="container py-5">
+                    <div class="text-center mb-5 reveal">
+                        <h2 class="fw-bold">Our Core Services</h2>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-4 reveal">
+                            <div class="card service-card">
+                                <div class="service-img-container">
+                                    <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800" alt="Drainage">
+                                </div>
+                                <div class="card-body p-4">
+                                    <h4>Drainage Services</h4>
+                                    <p>Comprehensive drainage solutions from unblocking to full excavations.</p>
+                                    <button onclick="route('service-drainage')" class="btn btn-neon w-100">Learn More</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 reveal">
+                            <div class="card service-card">
+                                <div class="service-img-container">
+                                    <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=800" alt="Plumbing">
+                                </div>
+                                <div class="card-body p-4">
+                                    <h4>Plumbing Repairs</h4>
+                                    <p>Emergency plumbing, toilet repairs, and leak detection services.</p>
+                                    <button onclick="route('service-plumbing')" class="btn btn-neon w-100">Learn More</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 reveal">
+                            <div class="card service-card">
+                                <div class="service-img-container">
+                                    <img src="https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&q=80&w=800" alt="CCTV">
+                                </div>
+                                <div class="card-body p-4">
+                                    <h4>CCTV Surveys</h4>
+                                    <p>Advanced diagnostic surveys to identify drain problems fast.</p>
+                                    <button onclick="route('service-cctv')" class="btn btn-neon w-100">Learn More</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="py-5" style="background: var(--accent-black);">
+                <div class="container py-5 text-center text-white">
+                    <h2 class="display-4 fw-bold mb-4">Emergency in Manchester?</h2>
+                    <p class="fs-4 mb-5 opacity-75">Our engineers are on standby 24 hours a day, 7 days a week.</p>
+                    <a href="tel:07366712466" class="btn btn-neon btn-lg px-5 py-3 btn-emergency">CALL 0736 671 2466 NOW</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="view-contact" style="display: none;">
+            <div class="pt-5 mt-5">
+                <div class="container py-5">
+                    <div class="row g-5">
+                        <div class="col-lg-6">
+                            <h2 class="fw-bold mb-4">Get In Touch</h2>
+                            <form id="contactForm">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="name" placeholder="Name">
+                                    <label>Your Name</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="tel" class="form-control" id="phone" placeholder="Phone">
+                                    <label>Phone Number</label>
+                                </div>
+                                <div class="form-floating mb-4">
+                                    <textarea class="form-control" id="message" style="height: 150px" placeholder="Message"></textarea>
+                                    <label>How can we help?</label>
+                                </div>
+                                <button type="submit" class="btn btn-neon w-100 p-3">SEND MESSAGE</button>
+                            </form>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="bg-light p-5 rounded-4">
+                                <h3 class="fw-bold mb-4">Contact Details</h3>
+                                <p><i class="fas fa-phone-alt text-primary me-2"></i> 0161 888 0833</p>
+                                <p><i class="fas fa-envelope text-primary me-2"></i> help@quickdrainsmanchester.co.uk</p>
+                                <p><i class="fas fa-map-marker-alt text-primary me-2"></i> Central Manchester Business Center, M1 1AF</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Template -->
+        <div id="view-service" style="display: none;">
+            <div class="pt-5 mt-5">
+                <div class="container py-5">
+                    <h1 id="service-title" class="display-4 fw-bold mb-4">Service Title</h1>
+                    <div class="row align-items-center">
+                        <div class="col-md-6 mb-4">
+                            <p id="service-desc" class="fs-5 text-muted"></p>
+                            <a href="tel:07366712466" class="btn btn-neon mt-3">Get Help Now</a>
+                        </div>
+                        <div class="col-md-6">
+                            <img id="service-image" src="" class="img-fluid rounded-4 shadow" alt="Service">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h4 class="fw-bold mb-4"><span style="color: var(--primary-color);">QUICK</span> DRAINS</h4>
+                    <p class="opacity-75">Manchester's leading drainage and plumbing emergency specialists.</p>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="fw-bold mb-4">Quick Links</h5>
+                    <ul class="list-unstyled opacity-75">
+                        <li><a href="#" onclick="route('home')" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="#" onclick="route('contact')" class="text-white text-decoration-none">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <h4 class="text-primary fw-bold">0161 888 0833</h4>
+                    <p class="opacity-75">Available 24/7/365</p>
+                </div>
+            </div>
+            <hr class="mt-5 opacity-25">
+            <div class="text-center opacity-50 pb-3">
+                <small>&copy; 2024 Quick Drains Manchester.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile UI -->
+    <a href="tel:07366712466" class="floating-call d-lg-flex d-none">
+        <i class="fas fa-phone-alt"></i>
+    </a>
+    <div class="mobile-cta-bar">
+        <a href="tel:01618880833" class="btn btn-outline-dark flex-fill fw-bold">OFFICE</a>
+        <a href="tel:07366712466" class="btn btn-neon flex-fill fw-bold btn-emergency">EMERGENCY</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const pages = {
+            'home': { view: 'view-home', title: 'Professional Drainage Manchester' },
+            'contact': { view: 'view-contact', title: 'Contact Us' },
+            'service-drainage': { view: 'view-service', title: 'Emergency Drainage', image: 'https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&q=80&w=800', desc: 'Expert drainage solutions across Greater Manchester.' },
+            'service-plumbing': { view: 'view-service', title: 'Emergency Plumbing', image: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&q=80&w=800', desc: 'Fast repairs for leaks and bursts pipes.' }
+        };
+
+        function route(pageKey) {
+            const content = document.getElementById('page-content');
+            content.classList.add('page-fade-out');
+            setTimeout(() => {
+                document.querySelectorAll('[id^="view-"]').forEach(v => v.style.display = 'none');
+                const pageData = pages[pageKey] || pages['home'];
+                if (pageData.view === 'view-service') {
+                    document.getElementById('service-title').innerText = pageData.title;
+                    document.getElementById('service-desc').innerText = pageData.desc;
+                    document.getElementById('service-image').src = pageData.image;
+                }
+                document.getElementById(pageData.view).style.display = 'block';
+                document.title = pageData.title + " | Quick Drains Manchester";
+                window.scrollTo(0,0);
+                content.classList.remove('page-fade-out');
+                reveal();
+                const navCollapse = document.getElementById('navbarNav');
+                if (navCollapse.classList.contains('show')) bootstrap.Collapse.getInstance(navCollapse).hide();
+            }, 400);
+        }
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 150) reveals[i].classList.add("active");
+            }
+        }
+
+        window.addEventListener("scroll", function() {
+            const nav = document.querySelector(".navbar");
+            if (window.scrollY > 30) nav.classList.add("scrolled");
+            else nav.classList.remove("scrolled");
+            reveal();
+        });
+
+        window.addEventListener('load', reveal);
+    </script>
+</body>
+</html>
